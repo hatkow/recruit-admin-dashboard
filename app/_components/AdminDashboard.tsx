@@ -47,6 +47,29 @@ const APPS = [
     tag: "ストレージ",
   },
 
+  // ▼ ChatGPT共有リンク
+  {
+    id: "chatgpt-1",
+    name: "ChatGPT共有リンク①",
+    desc: "画像生成や求人関連プロンプトの共有ページ",
+    href: "https://chatgpt.com/share/68a07948-2cbc-8012-a912-ee278ef0dc9a",
+    tag: "共有",
+  },
+  {
+    id: "chatgpt-2",
+    name: "ChatGPT共有リンク②",
+    desc: "別バージョンの生成アプリ／共有ページ",
+    href: "https://chatgpt.com/share/68a0799a-f8d0-8012-8bae-6f6a77990a1e",
+    tag: "共有",
+  },
+  {
+    id: "chatgpt-3",
+    name: "ChatGPT共有リンク③",
+    desc: "求人情報まとめの共有ページ",
+    href: "https://chatgpt.com/share/68954dfa-2e60-8012-aeb2-af6f4bfe6100",
+    tag: "共有",
+  },
+
   // ▼ 求人媒体ボタン（翔栄サービス向け固定URL）
   {
     id: "official-careers",
@@ -193,6 +216,7 @@ export default function AdminDashboard() {
               <option value="公共">公共</option>
               <option value="媒体">媒体</option>
               <option value="専門">専門</option>
+              <option value="共有">共有</option>
             </select>
           </div>
         </div>
