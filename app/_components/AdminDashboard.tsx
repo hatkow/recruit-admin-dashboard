@@ -8,14 +8,14 @@ const APPS = [
     id: "posting-table",
     name: "投稿表作成アプリ",
     desc: "Instagramの投稿計画表を自動生成。スプレッドシートに貼り付け可能な形式で出力。",
-    href: "#",
+    href: "https://chatgpt.com/canvas/shared/68a07c87fbc881919ec8d4d42e40eded",
     tag: "運用",
   },
   {
     id: "image-prompt",
     name: "画像プロンプト生成アプリ",
     desc: "投稿文から画像生成用プロンプトを作成。画像生成アプリにそのまま投入。",
-    href: "#",
+    href: "https://chatgpt.com/canvas/shared/68a07ce42e0c8191a37dbfb6ccb93a2c",
     tag: "クリエイティブ",
   },
   {
@@ -48,28 +48,7 @@ const APPS = [
   },
 
   // ▼ ChatGPT共有リンク
-  {
-    id: "chatgpt-1",
-    name: "ChatGPT共有リンク①",
-    desc: "画像生成や求人関連プロンプトの共有ページ",
-    href: "https://chatgpt.com/share/68a07948-2cbc-8012-a912-ee278ef0dc9a",
-    tag: "共有",
-  },
-  {
-    id: "chatgpt-2",
-    name: "ChatGPT共有リンク②",
-    desc: "別バージョンの生成アプリ／共有ページ",
-    href: "https://chatgpt.com/share/68a0799a-f8d0-8012-8bae-6f6a77990a1e",
-    tag: "共有",
-  },
-  {
-    id: "chatgpt-3",
-    name: "ChatGPT共有リンク③",
-    desc: "求人情報まとめの共有ページ",
-    href: "https://chatgpt.com/share/68954dfa-2e60-8012-aeb2-af6f4bfe6100",
-    tag: "共有",
-  },
-
+      
   // ▼ 求人媒体ボタン（翔栄サービス向け固定URL）
   {
     id: "official-careers",
@@ -216,8 +195,7 @@ export default function AdminDashboard() {
               <option value="公共">公共</option>
               <option value="媒体">媒体</option>
               <option value="専門">専門</option>
-              <option value="共有">共有</option>
-            </select>
+                          </select>
           </div>
         </div>
       </header>
