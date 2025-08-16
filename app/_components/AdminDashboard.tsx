@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 
-// ▼ 各求人媒体へのリンクを管理（翔栄サービス専用求人ページURL版）
+// ▼ 各求人媒体へのリンクを管理（翔栄サービス専用求人ページURL版 + 色分け）
 const APPS = [
   // ▼ 既存アプリ
   {
@@ -10,6 +10,7 @@ const APPS = [
     desc: "Instagramの投稿計画表を自動生成。スプレッドシートに貼り付け可能な形式で出力。",
     href: "https://chatgpt.com/canvas/shared/68a07c87fbc881919ec8d4d42e40eded",
     tag: "運用",
+    color: "bg-blue-50 border-blue-200",
   },
   {
     id: "image-prompt",
@@ -17,6 +18,7 @@ const APPS = [
     desc: "投稿文から画像生成用プロンプトを作成。画像生成アプリにそのまま投入。",
     href: "https://chatgpt.com/canvas/shared/68a07ce42e0c8191a37dbfb6ccb93a2c",
     tag: "クリエイティブ",
+    color: "bg-purple-50 border-purple-200",
   },
   {
     id: "ig-manual",
@@ -24,6 +26,7 @@ const APPS = [
     desc: "手順書（社内マニュアル）をWeb表示。スタッフ教育・引き継ぎに。",
     href: "#",
     tag: "ナレッジ",
+    color: "bg-yellow-50 border-yellow-200",
   },
   {
     id: "analytics",
@@ -31,6 +34,7 @@ const APPS = [
     desc: "媒体別の掲載状況と応募数の集計・可視化（試験運用）。",
     href: "#",
     tag: "分析",
+    color: "bg-green-50 border-green-200",
   },
   {
     id: "job-templates",
@@ -38,94 +42,105 @@ const APPS = [
     desc: "媒体別のフォーマットに合わせた原稿テンプレートを生成。",
     href: "#",
     tag: "クリエイティブ",
+    color: "bg-purple-50 border-purple-200",
   },
   {
     id: "files",
     name: "ファイル置き場",
     desc: "共有用の資料・データにアクセス。",
-    href: "https://showei-service.com/gallery.php",
+    href: "#",
     tag: "ストレージ",
+    color: "bg-gray-50 border-gray-200",
   },
 
-  // ▼ ChatGPT共有リンク
-      
   // ▼ 求人媒体ボタン（翔栄サービス向け固定URL）
   {
     id: "official-careers",
     name: "公式サイト（採用ページ）",
     desc: "自社採用ページにアクセス（ドライバー募集・一般事務など）",
     href: "https://showei-service.com/recruitment/",
-    tag: "求人媒体",
+    tag: "公式",
+    color: "bg-blue-100 border-blue-300",
   },
   {
     id: "hello-work",
     name: "ハローワーク",
     desc: "ハローワークインターネットサービスの翔栄サービス求人ページ",
     href: "https://www.hellowork.mhlw.go.jp/",
-    tag: "求人媒体",
+    tag: "公共",
+    color: "bg-green-100 border-green-300",
   },
   {
     id: "indeed",
     name: "Indeed（企業ページ）",
     desc: "Indeedの企業ページ／求人一覧",
     href: "https://jp.indeed.com/cmp/%E6%9C%89%E9%99%90%E4%BC%9A%E7%A4%BE-%E7%BF%94%E6%A0%84%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "airwork",
     name: "AirWORK（採用サイト）",
     desc: "採用サイト（JobSuite）",
     href: "https://so8h151c.jbplt.jp/",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "doraever",
     name: "ドラEVER（求人詳細）",
     desc: "小型ワンボックス配送などの求人詳細",
     href: "https://doraever.jp/job-357352",
-    tag: "求人媒体",
+    tag: "専門",
+    color: "bg-pink-100 border-pink-300",
   },
   {
     id: "hatalike",
     name: "はたらいく",
     desc: "はたらいく内の翔栄サービス求人ページ",
     href: "https://www.hatalike.jp/kw/%E7%BF%94%E6%A0%84%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9/",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "kyujinbox",
     name: "求人ボックス（一覧）",
     desc: "求人ボックス内の翔栄サービス掲載（例：玉村町2tドライバー）",
     href: "https://xn--pckua2a7gp15o89zb.com/%E5%AE%9A%E6%9C%9F%E4%BE%BF-%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%83%BC%E3%81%AE%E4%BB%95%E4%BA%8B-%E7%BE%A4%E9%A6%AC%E7%9C%8C%E7%8E%89%E6%9D%91%E7%94%BA",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "stanby",
     name: "スタンバイ",
     desc: "スタンバイ内の翔栄サービス求人ページ",
     href: "https://jp.stanby.com/jobs/翔栄サービス",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "google-for-jobs",
     name: "Google for Jobs",
     desc: "Google for Jobsで翔栄サービス求人を確認",
     href: "https://www.google.com/search?q=有限会社翔栄サービス+求人",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "linkedin",
     name: "LinkedIn求人",
     desc: "LinkedInの翔栄サービス求人ページ",
     href: "https://www.linkedin.com/jobs/search/?keywords=翔栄サービス",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
   {
     id: "facebook-jobs",
     name: "Facebook求人",
     desc: "Facebook求人検索で翔栄サービスを確認",
     href: "https://www.facebook.com/jobs/search/?q=翔栄サービス",
-    tag: "求人媒体",
+    tag: "媒体",
+    color: "bg-orange-100 border-orange-300",
   },
 ];
 
@@ -195,7 +210,12 @@ export default function AdminDashboard() {
               <option value="公共">公共</option>
               <option value="媒体">媒体</option>
               <option value="専門">専門</option>
-                          </select>
+              <option value="運用">運用</option>
+              <option value="クリエイティブ">クリエイティブ</option>
+              <option value="ナレッジ">ナレッジ</option>
+              <option value="分析">分析</option>
+              <option value="ストレージ">ストレージ</option>
+            </select>
           </div>
         </div>
       </header>
@@ -204,10 +224,10 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((app) => (
             <a key={app.id} href={app.href} className="block group" target="_blank" rel="noreferrer">
-              <div className="bg-white rounded-2xl border shadow-sm hover:shadow-md transition-all p-5 h-full flex flex-col">
+              <div className={`rounded-2xl border shadow-sm hover:shadow-md transition-all p-5 h-full flex flex-col ${app.color}`}>
                 <div className="flex items-center justify-between mb-2">
                   <h2 className="text-lg font-semibold group-hover:underline">{app.name}</h2>
-                  <span className="text-xs px-2 py-1 rounded-full bg-gray-100 border">{app.tag}</span>
+                  <span className="text-xs px-2 py-1 rounded-full bg-white/60 border">{app.tag}</span>
                 </div>
                 <p className="text-sm text-gray-600 flex-1">{app.desc}</p>
                 <div className="mt-4">
