@@ -43,7 +43,7 @@ const APPS = [
     id: "files",
     name: "ファイル置き場",
     desc: "共有用の資料・データにアクセス。",
-    href: "#",
+    href: "https://showei-service.com/gallery.php",
     tag: "ストレージ",
   },
 
